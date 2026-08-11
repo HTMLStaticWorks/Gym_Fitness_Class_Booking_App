@@ -1,0 +1,744 @@
+/* PulseFit - Premium CSS Overrides and Animations */
+
+:root {
+  /* Brand Theme Tokens (Light Mode Default) */
+  --bg-primary: #F8F9FB;
+  --bg-surface: #FFFFFF;
+  --text-primary: #172033;
+  --text-muted: #64748B;
+  
+  --primary-color: #FF2D55;
+  --primary-dark: #E11D48;
+  --accent-color: #FF6B81;
+  --white: #FFFFFF;
+  
+  /* Shadows */
+  --premium-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --premium-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  --premium-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.12);
+  --premium-shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+  
+  /* Font Family Overrides */
+  --font-headings: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Glassmorphism Defaults */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] {
+  /* Brand Theme Tokens (Dark Mode) */
+  --bg-primary: #0B0F19;
+  --bg-surface: #151A24;
+  --text-primary: #FFFFFF;
+  --text-muted: #94A3B8;
+  
+  --glass-bg: rgba(21, 26, 36, 0.7);
+  --glass-border: rgba(255, 45, 85, 0.15);
+}
+
+/* Global Reset Overrides */
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body);
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+  font-family: var(--font-headings) !important;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.brand-name {
+  color: var(--text-primary) !important;
+}
+
+section {
+  background-color: var(--bg-primary) !important;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Gradient Orbs */
+.gradient-orb {
+  position: absolute;
+  width: clamp(200px, 40vw, 500px);
+  height: clamp(200px, 40vw, 500px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 45, 85, 0.15) 0%, rgba(255, 107, 129, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrb 12s ease-in-out infinite alternate;
+}
+
+.gradient-orb-secondary {
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.12) 0%, rgba(0, 229, 255, 0) 70%);
+  animation-delay: -6s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, -60px) scale(1.1); }
+}
+
+/* Premium Card Styles */
+.premium-card {
+  background-color: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: var(--premium-shadow-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+[data-theme="dark"] .premium-card {
+  background-color: var(--bg-surface);
+  border: 1px solid rgba(255, 45, 85, 0.08);
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--premium-shadow-xl);
+  border-color: rgba(255, 45, 85, 0.3);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--premium-shadow-lg);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Buttons & Hover Animations */
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--white) !important;
+  font-family: var(--font-headings);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 45, 85, 0.4);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  font-family: var(--font-headings);
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color) !important;
+  color: var(--white) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 45, 85, 0.25);
+}
+
+/* ======================================================== */
+/* PAGE SPECIFIC HEROS                                     */
+/* ======================================================== */
+
+/* 1. HOME: Fullscreen Cinematic Hero */
+.home-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0 4rem;
+}
+
+.home-hero-visual {
+  position: relative;
+  width: 100%;
+}
+
+.home-hero-image {
+  border-radius: 1.75rem;
+  box-shadow: var(--premium-shadow-xl);
+  transform: scale(1);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-hero-visual:hover .home-hero-image {
+  transform: scale(1.03);
+}
+
+/* Floating Badges for Home */
+.floating-stat-badge {
+  position: absolute;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--premium-shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+  animation: floatBadge 6s ease-in-out infinite alternate;
+}
+
+.badge-members {
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.badge-classes {
+  bottom: 25%;
+  left: -8%;
+  animation-delay: -1.5s;
+}
+
+.badge-trainers {
+  top: 25%;
+  right: -5%;
+  animation-delay: -3s;
+}
+
+.badge-rating {
+  bottom: 10%;
+  right: -2%;
+  animation-delay: -4.5s;
+}
+
+@keyframes floatBadge {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+/* 2. WORKOUTS: Asymmetric Split Hero */
+.workouts-hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 4rem;
+  position: relative;
+}
+
+.workouts-hero-image-wrap {
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.workouts-hero-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.workouts-hero-image-wrap:hover .workouts-hero-image {
+  transform: scale(1.05);
+}
+
+.overlapping-workout-card {
+  position: absolute;
+  right: 5%;
+  bottom: -5%;
+  width: 280px;
+  padding: 1.25rem;
+  z-index: 10;
+  border: 1px solid rgba(255, 45, 85, 0.25);
+  box-shadow: var(--premium-shadow-xl);
+}
+
+/* Progress ring simulation */
+.progress-ring-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 3. ABOUT: Storytelling Hero */
+.about-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 4rem;
+  position: relative;
+}
+
+.about-collage {
+  position: relative;
+  height: 480px;
+  width: 100%;
+}
+
+.about-img-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  box-shadow: var(--premium-shadow-lg);
+  z-index: 2;
+}
+
+.about-img-sub {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  border: 6px solid var(--bg-primary);
+  box-shadow: var(--premium-shadow-xl);
+  z-index: 3;
+  transition: transform 0.5s ease;
+}
+
+.about-collage:hover .about-img-sub {
+  transform: translate(-10px, -10px);
+}
+
+/* Journey Timeline */
+.timeline-premium {
+  position: relative;
+  border-left: 2px solid var(--primary-color);
+  padding-left: 2rem;
+  margin-left: 1rem;
+}
+
+.timeline-step {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-step::before {
+  content: '';
+  position: absolute;
+  left: -2.7rem;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--bg-primary);
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.timeline-step:hover::before {
+  background-color: var(--primary-color);
+  box-shadow: 0 0 0 5px rgba(255, 45, 85, 0.2);
+}
+
+/* 4. CLASSES: Class Discovery Layout */
+.classes-hero {
+  padding: 8rem 0 4rem;
+  position: relative;
+}
+
+.classes-marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  padding: 1.5rem 0;
+  background: linear-gradient(90deg, rgba(255,45,85,0.04) 0%, rgba(0,0,0,0) 50%, rgba(255,45,85,0.04) 100%);
+  margin-bottom: 3rem;
+}
+
+.classes-marquee-content {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-badge {
+  display: inline-block;
+  margin: 0 2rem;
+  font-family: var(--font-headings);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  opacity: 0.8;
+}
+
+.classes-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.class-premium-card {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: var(--premium-shadow-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: var(--bg-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .class-premium-card {
+  border: 1px solid rgba(255, 45, 85, 0.08);
+}
+
+.class-card-img-wrap {
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+}
+
+.class-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.class-premium-card:hover .class-card-img {
+  transform: scale(1.08);
+}
+
+.class-card-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.class-card-body {
+  padding: 1.5rem;
+}
+
+.class-card-metrics {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 0;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .class-card-metrics {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.class-premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--premium-shadow-xl);
+  border-color: rgba(255, 45, 85, 0.3);
+}
+
+/* 5. MEMBERSHIPS: Pricing Hero */
+.memberships-hero {
+  padding: 8rem 0 4rem;
+  position: relative;
+}
+
+.billing-toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.switch-pricing {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch-pricing input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-pricing {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--text-muted);
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider-pricing:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider-pricing {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider-pricing:before {
+  transform: translateX(26px);
+}
+
+.membership-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: var(--premium-shadow-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+[data-theme="dark"] .membership-card {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.membership-card.recommended {
+  border: 2px solid var(--primary-color);
+  transform: scale(1.02);
+  box-shadow: var(--premium-shadow-xl);
+}
+
+.recommended-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.membership-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--premium-shadow-xl);
+}
+
+.plan-price-wrap {
+  margin: 1.5rem 0 2rem;
+}
+
+.plan-price-num {
+  font-family: var(--font-headings);
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.plan-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+}
+
+.plan-features-list li {
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.plan-features-list li i {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+/* 6. CONTACT: Split Hero */
+.contact-premium-hero {
+  padding: 8rem 0 4rem;
+  position: relative;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-column: gap-3;
+}
+
+.contact-detail-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background-color: var(--bg-surface);
+  border-radius: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--premium-shadow-sm);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .contact-detail-card {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.contact-detail-card:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.contact-detail-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: rgba(255, 45, 85, 0.08);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Forms styling updates */
+.premium-form-card {
+  background: var(--bg-surface);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  box-shadow: var(--premium-shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .premium-form-card {
+  border-color: rgba(255, 45, 85, 0.15);
+}
+
+.premium-input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.premium-input-group .form-icon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+.premium-input-group textarea + .form-icon {
+  top: 1.5rem;
+  transform: none;
+}
+
+.premium-input-group input,
+.premium-input-group select,
+.premium-input-group textarea {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.premium-input-group input:focus,
+.premium-input-group select:focus,
+.premium-input-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  background-color: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(255, 45, 85, 0.15);
+}
+
+/* ======================================================== */
+/* MOBILE NAVIGATION RIGHT-ALIGN                           */
+/* ======================================================== */
+@media (max-width: 1199.98px) {
+  .navbar .container-fluid {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  
+  .hamburger-menu {
+    order: 2 !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Animation Utilities */
+.stagger-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: staggerUpAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+.delay-3 { animation-delay: 0.45s; }
+.delay-4 { animation-delay: 0.6s; }
+
+@keyframes staggerUpAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

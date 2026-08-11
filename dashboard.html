@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Portal - PulseFit Gym & Classes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/dashboard.css" rel="stylesheet">
+    <link href="assets/css/premium.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-rgb: 34, 197, 94;
+            --accent-rgb: 6, 182, 212;
+        }
+
+        .stat-glass-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .stat-glass-card {
+            background: rgba(20, 20, 30, 0.6);
+            border-color: rgba(255, 45, 85, 0.15);
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .bg-blue-soft {
+            background-color: rgba(6, 182, 212, 0.15);
+            color: #06B6D4;
+        }
+
+        .bg-green-soft {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #22C55E;
+        }
+
+        .bg-purple-soft {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #22C55E;
+        }
+
+        .bg-orange-soft {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        .dashboard-widget {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.04);
+        }
+
+        [data-theme="dark"] .dashboard-widget {
+            background: rgba(20, 20, 30, 0.6);
+            border-color: rgba(255, 45, 85, 0.15);
+        }
+
+        .widget-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        [data-theme="dark"] .widget-header {
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .widget-body {
+            padding: 1.5rem;
+        }
+
+        .class-timetable-table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .membership-card-premium {
+            background: linear-gradient(135deg, #ff2d55 0%, #9e0e31 100%);
+            color: white;
+            border-radius: 1.25rem;
+            padding: 2.25rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1rem 2.5rem rgba(255, 45, 85, 0.35);
+        }
+
+        .membership-card-premium::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -20%;
+            width: 60%;
+            height: 120%;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+            border-radius: 50%;
+        }
+
+        .timetable-slot-card {
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        [data-theme="dark"] .timetable-slot-card {
+            border-color: rgba(255, 255, 255, 0.08);
+            background: rgba(10, 10, 15, 0.4);
+        }
+
+        .timetable-slot-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-brand">
+            <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                <div class="brand-logo">
+                    <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                </div>
+                <span class="brand-name ms-2 fw-bold">PulseFit</span>
+            </a>
+        </div>
+
+        <nav class="sidebar-menu">
+            <div class="menu-label">Portal Home</div>
+            <a href="#" class="menu-item active" data-panel="overview">
+                <i class="bi bi-grid-1x2-fill"></i> <span>Overview</span>
+            </a>
+            <a href="#" class="menu-item" data-panel="timetable">
+                <i class="bi bi-calendar3"></i> <span>Weekly Timetable</span>
+            </a>
+            <a href="#" class="menu-item" data-panel="booked">
+                <i class="bi bi-bookmark-heart-fill"></i> <span>Booked Classes</span>
+            </a>
+
+            <div class="menu-label mt-4">Gym Activity</div>
+            <a href="#" class="menu-item" data-panel="attendance">
+                <i class="bi bi-activity"></i> <span>Attendance Log</span>
+            </a>
+            <a href="#" class="menu-item" data-panel="membership">
+                <i class="bi bi-credit-card-2-front-fill"></i> <span>Membership Plans</span>
+            </a>
+
+            <div class="menu-label mt-4">Account</div>
+            <a href="#" class="menu-item" data-panel="settings">
+                <i class="bi bi-gear-wide-connected"></i> <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer mt-auto">
+            <a href="index.html" class="menu-item logout">
+                <i class="bi bi-box-arrow-left"></i> <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+        <!-- Top Navigation -->
+        <header class="dashboard-top-nav">
+            <div class="d-flex align-items-center justify-content-between w-100">
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-icon d-lg-none" id="sidebarToggle"><i class="bi bi-list fs-4"></i></button>
+                    <div class="search-bar d-none d-md-block">
+                        <div class="input-group">
+                            <span class="input-group-text border-0 bg-transparent text-muted"><i
+                                    class="bi bi-search"></i></span>
+                            <input type="text" class="form-control border-0 bg-transparent"
+                                placeholder="Search classes...">
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-actions d-flex align-items-center gap-3">
+                    <button class="btn btn-icon ripple" onclick="Utils.showNotification('No new notifications.', 'info')"><i class="bi bi-bell"></i></button>
+                    <div class="profile-chip d-flex align-items-center gap-2">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=100&auto=format&fit=crop"
+                            class="avatar">
+                        <div class="profile-info d-none d-lg-block">
+                            <span class="d-block fw-bold small member-name-display">Alex Rivera</span>
+                            <span class="d-block text-muted tiny member-tier-display">Elite Class Pass</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-secondary btn-sm ms-2" id="rtlToggleBtn">RTL</button>
+                    <button class="theme-toggle ms-2" id="dashboardThemeToggle"><i
+                            class="bi bi-moon-stars"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container-fluid p-4">
+
+            <!-- ===================== PANEL: Overview ===================== -->
+            <div class="dash-panel" id="panel-overview">
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6">
+                        <h2 class="fw-bold mb-1">Welcome back, <span class="member-first-name">Alex</span>!</h2>
+                        <p class="text-muted">Here is your PulseFit activity summary for today.</p>
+                    </div>
+                    <div class="col-lg-6 text-lg-end overview-toolbar">
+                        <button class="btn btn-primary rounded-pill px-4 ms-3 shadow-premium show-timetable-btn"><i
+                                class="bi bi-plus-lg me-2"></i>Book a Class</button>
+                    </div>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="stat-glass-card">
+                            <div class="stat-icon bg-blue-soft"><i class="bi bi-credit-card-2-front"></i></div>
+                            <div class="stat-data">
+                                <span class="label">Plan Level</span>
+                                <h4 class="value mb-0 member-tier-display">Elite Class Pass</h4>
+                                <span class="trend positive">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="stat-glass-card">
+                            <div class="stat-icon bg-green-soft"><i class="bi bi-calendar-event"></i></div>
+                            <div class="stat-data">
+                                <span class="label">Next Class</span>
+                                <h4 class="value mb-0" id="nextClassTitle">Zumba Cardio</h4>
+                                <span class="trend text-muted" id="nextClassTime">Tomorrow, 10:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="stat-glass-card">
+                            <div class="stat-icon bg-purple-soft"><i class="bi bi-geo-alt-fill"></i></div>
+                            <div class="stat-data">
+                                <span class="label">Check-ins (Month)</span>
+                                <h4 class="value mb-0">14 Slots</h4>
+                                <span class="trend positive"><i class="bi bi-arrow-up"></i> +3 vs last month</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6">
+                        <div class="stat-glass-card">
+                            <div class="stat-icon bg-orange-soft"><i class="bi bi-clock-history"></i></div>
+                            <div class="stat-data">
+                                <span class="label">Workout Time</span>
+                                <h4 class="value mb-0">21.5 Hours</h4>
+                                <span class="trend positive">Target: 25 hrs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-xl-8">
+                        <div class="dashboard-widget">
+                            <div class="widget-header">
+                                <h5 class="fw-bold m-0 text-title">Monthly Workout Trend</h5>
+                            </div>
+                            <div class="widget-body">
+                                <div class="mock-chart-container">
+                                    <svg viewBox="0 0 1000 300" class="graph-svg">
+                                        <defs>
+                                            <linearGradient id="gymGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#ff2d55;stop-opacity:0.2" />
+                                                <stop offset="100%" style="stop-color:#ff2d55;stop-opacity:0" />
+                                            </linearGradient>
+                                        </defs>
+                                        <path
+                                            d="M0,250 Q100,180 200,210 T400,120 T600,140 T800,90 T1000,60 L1000,300 L0,300 Z"
+                                            fill="url(#gymGradient)" />
+                                        <path d="M0,250 Q100,180 200,210 T400,120 T600,140 T800,90 T1000,60"
+                                            fill="none" stroke="#ff2d55" stroke-width="3" stroke-linecap="round" />
+                                        <g class="graph-points">
+                                            <circle cx="200" cy="210" r="4" fill="#ff2d55" />
+                                            <circle cx="400" cy="120" r="4" fill="#ff2d55" />
+                                            <circle cx="600" cy="140" r="4" fill="#ff2d55" />
+                                            <circle cx="800" cy="90" r="4" fill="#ff2d55" />
+                                            <circle cx="1000" cy="60" r="4" fill="#ff2d55" />
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="dashboard-widget h-100">
+                            <div class="widget-header">
+                                <h5 class="fw-bold m-0 text-title">Weekly Goal Progress</h5>
+                            </div>
+                            <div class="widget-body">
+                                <ul class="performance-list list-unstyled m-0">
+                                    <li class="p-item">
+                                        <div class="p-info">
+                                            <span class="p-name fw-bold small">Attendance (3 classes/week)</span>
+                                            <div class="p-bar-wrap">
+                                                <div class="p-bar bg-primary" style="width:66%"></div>
+                                            </div>
+                                        </div>
+                                        <span class="p-val text-success fw-bold">66%</span>
+                                    </li>
+                                    <li class="p-item pt-4">
+                                        <div class="p-info">
+                                            <span class="p-name fw-bold small">Calorie Burn Target</span>
+                                            <div class="p-bar-wrap">
+                                                <div class="p-bar bg-primary" style="width:85%"></div>
+                                            </div>
+                                        </div>
+                                        <span class="p-val text-success fw-bold">85%</span>
+                                    </li>
+                                    <li class="p-item pt-4">
+                                        <div class="p-info">
+                                            <span class="p-name fw-bold small">Hydration Target</span>
+                                            <div class="p-bar-wrap">
+                                                <div class="p-bar bg-primary" style="width:90%"></div>
+                                            </div>
+                                        </div>
+                                        <span class="p-val text-success fw-bold">90%</span>
+                                    </li>
+                                </ul>
+                                <hr class="my-4 opacity-5">
+                                <div
+                                    class="insights-box p-3 rounded-4 bg-primary text-white bg-opacity-10 border border-primary border-opacity-20">
+                                    <h6 class="fw-bold small mb-2"><i class="bi bi-stars me-2"></i>Coach Tip</h6>
+                                    <p class="tiny m-0 opacity-75">You are doing great on Zumba Cardio this week! Add a Strength session to balance your resistance workload.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== PANEL: Weekly Timetable ===================== -->
+            <div class="dash-panel d-none" id="panel-timetable">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-1">Weekly Class Timetable</h2>
+                    <p class="text-muted">Choose your workouts and reserve your spot in advance.</p>
+                </div>
+                <div class="row g-4" id="timetableSlotsList">
+                    <!-- Timetable Slot Cards -->
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="timetable-slot-card bg-white shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-primary text-white px-3 py-1 rounded-pill">Yoga</span>
+                                <span class="small text-muted fw-bold">Mon, 8:00 AM</span>
+                            </div>
+                            <h5 class="fw-bold">Vinyasa Yoga Flow</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Coach Sarah Jenkins</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary small fw-bold">60 min · Level 1-2</span>
+                                <button class="btn btn-outline-primary btn-sm px-3 rounded-pill book-class-btn" data-class-id="yoga_mon" data-class-title="Vinyasa Yoga Flow" data-class-time="Mon, 8:00 AM" data-class-coach="Sarah Jenkins">Book Slot</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="timetable-slot-card bg-white shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-danger text-white px-3 py-1 rounded-pill">Cardio</span>
+                                <span class="small text-muted fw-bold">Tue, 10:00 AM</span>
+                            </div>
+                            <h5 class="fw-bold">Zumba Cardio Blast</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Coach Carlos Santana</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary small fw-bold">45 min · High Energy</span>
+                                <button class="btn btn-outline-primary btn-sm px-3 rounded-pill book-class-btn" data-class-id="zumba_tue" data-class-title="Zumba Cardio Blast" data-class-time="Tue, 10:00 AM" data-class-coach="Carlos Santana">Book Slot</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="timetable-slot-card bg-white shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-warning text-dark px-3 py-1 rounded-pill">HIIT</span>
+                                <span class="small text-muted fw-bold">Wed, 6:00 PM</span>
+                            </div>
+                            <h5 class="fw-bold">HIIT & Metabolic Conditioning</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Coach Marcus Vance</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary small fw-bold">50 min · Advanced</span>
+                                <button class="btn btn-outline-primary btn-sm px-3 rounded-pill book-class-btn" data-class-id="hiit_wed" data-class-title="HIIT & Metabolic Conditioning" data-class-time="Wed, 6:00 PM" data-class-coach="Marcus Vance">Book Slot</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="timetable-slot-card bg-white shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-info text-dark px-3 py-1 rounded-pill">Strength</span>
+                                <span class="small text-muted fw-bold">Thu, 4:00 PM</span>
+                            </div>
+                            <h5 class="fw-bold">Strength & Conditioning</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Coach Helena Thorne</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary small fw-bold">60 min · Intermediate</span>
+                                <button class="btn btn-outline-primary btn-sm px-3 rounded-pill book-class-btn" data-class-id="strength_thu" data-class-title="Strength & Conditioning" data-class-time="Thu, 4:00 PM" data-class-coach="Helena Thorne">Book Slot</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="timetable-slot-card bg-white shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-primary text-white px-3 py-1 rounded-pill">Yoga</span>
+                                <span class="small text-muted fw-bold">Fri, 7:00 AM</span>
+                            </div>
+                            <h5 class="fw-bold">Morning Power Yoga</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Coach Sarah Jenkins</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary small fw-bold">60 min · Power Flow</span>
+                                <button class="btn btn-outline-primary btn-sm px-3 rounded-pill book-class-btn" data-class-id="yoga_fri" data-class-title="Morning Power Yoga" data-class-time="Fri, 7:00 AM" data-class-coach="Sarah Jenkins">Book Slot</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="timetable-slot-card bg-white shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-danger text-white px-3 py-1 rounded-pill">Cardio</span>
+                                <span class="small text-muted fw-bold">Sat, 9:00 AM</span>
+                            </div>
+                            <h5 class="fw-bold">Cardio Boxing & Core</h5>
+                            <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Coach Carlos Santana</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary small fw-bold">45 min · High Intensity</span>
+                                <button class="btn btn-outline-primary btn-sm px-3 rounded-pill book-class-btn" data-class-id="box_sat" data-class-title="Cardio Boxing & Core" data-class-time="Sat, 9:00 AM" data-class-coach="Carlos Santana">Book Slot</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== PANEL: Booked Classes ===================== -->
+            <div class="dash-panel d-none" id="panel-booked">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-1">Your Booked Classes</h2>
+                    <p class="text-muted">Manage your upcoming workouts and check-in times.</p>
+                </div>
+                <div class="dashboard-widget">
+                    <div class="widget-header">
+                        <h5 class="fw-bold m-0 text-title">Upcoming Reservations</h5>
+                    </div>
+                    <div class="widget-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-4 py-3">Class Name</th>
+                                        <th>Coach</th>
+                                        <th>Scheduled Time</th>
+                                        <th>Status</th>
+                                        <th class="text-end pe-4">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookedClassesTableBody">
+                                    <tr id="row_zumba_tue">
+                                        <td class="ps-4 fw-bold">Zumba Cardio Blast</td>
+                                        <td>Carlos Santana</td>
+                                        <td>Tomorrow, 10:00 AM</td>
+                                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3">Confirmed</span></td>
+                                        <td class="text-end pe-4">
+                                            <button class="btn btn-outline-danger btn-sm rounded-pill cancel-reservation-btn" data-row-id="row_zumba_tue" data-class-title="Zumba Cardio Blast">Cancel Booking</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="row_hiit_wed">
+                                        <td class="ps-4 fw-bold">HIIT & Metabolic Conditioning</td>
+                                        <td>Marcus Vance</td>
+                                        <td>Wed, 6:00 PM</td>
+                                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3">Confirmed</span></td>
+                                        <td class="text-end pe-4">
+                                            <button class="btn btn-outline-danger btn-sm rounded-pill cancel-reservation-btn" data-row-id="row_hiit_wed" data-class-title="HIIT & Metabolic Conditioning">Cancel Booking</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== PANEL: Attendance Log ===================== -->
+            <div class="dash-panel d-none" id="panel-attendance">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-1">Attendance Log</h2>
+                    <p class="text-muted">Review your gym check-ins and completed classes.</p>
+                </div>
+                <div class="dashboard-widget">
+                    <div class="widget-header">
+                        <h5 class="fw-bold m-0 text-title">Gym Check-in History</h5>
+                    </div>
+                    <div class="widget-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-4 py-3">Date</th>
+                                        <th>Time</th>
+                                        <th>Class Session</th>
+                                        <th>Coach</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="ps-4 fw-bold">Aug 10, 2026</td>
+                                        <td>08:12 AM</td>
+                                        <td>Vinyasa Yoga Flow</td>
+                                        <td>Sarah Jenkins</td>
+                                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3"><i class="bi bi-check2-circle me-1"></i>Checked In</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 fw-bold">Aug 08, 2026</td>
+                                        <td>04:05 PM</td>
+                                        <td>Strength & Conditioning</td>
+                                        <td>Helena Thorne</td>
+                                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3"><i class="bi bi-check2-circle me-1"></i>Checked In</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 fw-bold">Aug 06, 2026</td>
+                                        <td>06:02 PM</td>
+                                        <td>HIIT & Metabolic Conditioning</td>
+                                        <td>Marcus Vance</td>
+                                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3"><i class="bi bi-check2-circle me-1"></i>Checked In</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 fw-bold">Aug 03, 2026</td>
+                                        <td>08:08 AM</td>
+                                        <td>Vinyasa Yoga Flow</td>
+                                        <td>Sarah Jenkins</td>
+                                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3"><i class="bi bi-check2-circle me-1"></i>Checked In</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="ps-4 fw-bold">Jul 31, 2026</td>
+                                        <td>10:04 AM</td>
+                                        <td>Zumba Cardio Blast</td>
+                                        <td>Carlos Santana</td>
+                                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3"><i class="bi bi-check2-circle me-1"></i>Checked In</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== PANEL: Membership Plans ===================== -->
+            <div class="dash-panel d-none" id="panel-membership">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-1">Your Gym Membership</h2>
+                    <p class="text-muted">Manage active plans, billing info, and level upgrades.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="membership-card-premium mb-4">
+                            <div class="d-flex justify-content-between align-items-start mb-4">
+                                <div>
+                                    <span class="small text-white text-opacity-75 uppercase">Active Gym Membership</span>
+                                    <h3 class="fw-bold mt-1 text-white member-tier-display">Elite Class Pass</h3>
+                                </div>
+                                <i class="bi bi-heart-pulse-fill fs-2 text-white"></i>
+                            </div>
+                            <div class="mb-4">
+                                <span class="small text-white text-opacity-75 d-block">Member Name</span>
+                                <span class="fw-bold text-white fs-5 member-name-display">Alex Rivera</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="small text-white text-opacity-75 d-block">Renews On</span>
+                                    <span class="fw-bold text-white">Sept 10, 2026</span>
+                                </div>
+                                <span class="badge bg-white text-primary fw-bold px-3 py-2 rounded-pill shadow-sm">ACTIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="dashboard-widget mb-4">
+                            <div class="widget-header">
+                                <h5 class="fw-bold m-0 text-title">Change Membership Tier</h5>
+                            </div>
+                            <div class="widget-body">
+                                <p class="text-muted small">Choose your membership level below to upgrade or downgrade your active classes.</p>
+                                <div class="form-group mb-3">
+                                    <label class="form-label fw-bold small">Select Plan</label>
+                                    <select class="form-select" id="membershipPlanSelector">
+                                        <option value="Basic Gym Pass">Basic Gym Pass — $49/mo</option>
+                                        <option value="Elite Class Pass" selected>Elite Class Pass — $79/mo</option>
+                                        <option value="Platinum Coach Pass">Platinum Coach Pass — $149/mo</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary rounded-pill w-100" id="updateMembershipTierBtn">Update Membership online</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== PANEL: Settings ===================== -->
+            <div class="dash-panel d-none" id="panel-settings">
+                <div class="mb-5">
+                    <h2 class="fw-bold mb-1">Account Settings</h2>
+                    <p class="text-muted">Manage your profile, notification frequencies, and gym portal preferences.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="dashboard-widget">
+                            <div class="widget-header">
+                                <h5 class="fw-bold m-0 text-title">Portal Profile</h5>
+                            </div>
+                            <div class="widget-body text-center">
+                                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=200&auto=format&fit=crop"
+                                    class="rounded-circle mb-3"
+                                    style="width:80px;height:80px;object-fit:cover;border:3px solid #ff2d55;">
+                                <h5 class="fw-bold mb-0 member-name-display">Alex Rivera</h5>
+                                <p class="text-muted small mb-3 member-tier-display">Elite Class Pass</p>
+                                <p class="small text-muted"><i
+                                        class="bi bi-envelope me-2"></i>alex.rivera@pulsefit.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="dashboard-widget mb-4">
+                            <div class="widget-header">
+                                <h5 class="fw-bold m-0 text-title">General Settings</h5>
+                            </div>
+                            <div class="widget-body">
+                                <form id="settingsForm" onsubmit="event.preventDefault();">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold small">First Name</label>
+                                            <input type="text" class="form-control" id="settingsFirstName" value="Alex">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold small">Last Name</label>
+                                            <input type="text" class="form-control" id="settingsLastName" value="Rivera">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold small">Email Address</label>
+                                            <input type="email" class="form-control" id="settingsEmail" value="alex.rivera@pulsefit.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold small">Preferred Workout Time</label>
+                                            <select class="form-select" id="settingsWorkoutTime">
+                                                <option selected>Morning (6:00 AM - 10:00 AM)</option>
+                                                <option>Mid-Day (10:00 AM - 3:00 PM)</option>
+                                                <option>Evening (3:00 PM - 10:00 PM)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 text-end">
+                                            <button type="button" class="btn btn-primary rounded-pill px-4" id="saveSettingsBtn">Save Portal Changes</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/premium.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ── Panel Navigation ──────────────────────────────────────────
+            const menuItems = document.querySelectorAll('.menu-item[data-panel]');
+            const panels = document.querySelectorAll('.dash-panel');
+
+            function showPanel(panelId) {
+                panels.forEach(p => p.classList.add('d-none'));
+                document.getElementById('panel-' + panelId)?.classList.remove('d-none');
+                menuItems.forEach(i => i.classList.remove('active'));
+                document.querySelector('[data-panel="' + panelId + '"]')?.classList.add('active');
+            }
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    showPanel(this.dataset.panel);
+                    if (window.innerWidth < 992) document.body.classList.remove('sidebar-active');
+                });
+            });
+
+            // Redirect CTA to timetable
+            document.querySelectorAll('.show-timetable-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    showPanel('timetable');
+                });
+            });
+
+            // ── Sidebar Toggle (mobile) ───────────────────────────────────
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', () => document.body.classList.toggle('sidebar-active'));
+            }
+
+
+            // ── Timetable Booking Logic ───────────────────────────────────
+            document.querySelectorAll('.book-class-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const classId = this.getAttribute('data-class-id');
+                    const classTitle = this.getAttribute('data-class-title');
+                    const classTime = this.getAttribute('data-class-time');
+                    const classCoach = this.getAttribute('data-class-coach');
+
+                    // Check if already booked
+                    if (document.getElementById('row_' + classId)) {
+                        Utils.showNotification('You have already reserved a slot for this session!', 'warning');
+                        return;
+                    }
+
+                    // Create new row
+                    const tbody = document.getElementById('bookedClassesTableBody');
+                    const tr = document.createElement('tr');
+                    tr.id = 'row_' + classId;
+                    tr.innerHTML = `
+                        <td class="ps-4 fw-bold">${classTitle}</td>
+                        <td>${classCoach}</td>
+                        <td>${classTime}</td>
+                        <td><span class="badge bg-success-subtle text-success rounded-pill px-3">Confirmed</span></td>
+                        <td class="text-end pe-4">
+                            <button class="btn btn-outline-danger btn-sm rounded-pill cancel-reservation-btn" data-row-id="row_${classId}" data-class-title="${classTitle}">Cancel Booking</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+
+                    // Add cancellation handler
+                    tr.querySelector('.cancel-reservation-btn').addEventListener('click', function () {
+                        const rowId = this.getAttribute('data-row-id');
+                        const title = this.getAttribute('data-class-title');
+                        document.getElementById(rowId).remove();
+                        Utils.showNotification(`Cancelled booking for ${title}`, 'info');
+                    });
+
+                    // Update overview next class details
+                    document.getElementById('nextClassTitle').textContent = classTitle;
+                    document.getElementById('nextClassTime').textContent = classTime;
+
+                    Utils.showNotification(`Slot booked successfully for ${classTitle}!`, 'success');
+                });
+            });
+
+            // Add cancellation handler to existing rows
+            document.querySelectorAll('.cancel-reservation-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const rowId = this.getAttribute('data-row-id');
+                    const title = this.getAttribute('data-class-title');
+                    document.getElementById(rowId).remove();
+                    Utils.showNotification(`Cancelled booking for ${title}`, 'info');
+                });
+            });
+
+            // ── Membership Update ─────────────────────────────────────────
+            const updateMembershipTierBtn = document.getElementById('updateMembershipTierBtn');
+            if (updateMembershipTierBtn) {
+                updateMembershipTierBtn.addEventListener('click', function () {
+                    const selector = document.getElementById('membershipPlanSelector');
+                    const selectedValue = selector.options[selector.selectedIndex].value;
+                    
+                    document.querySelectorAll('.member-tier-display').forEach(el => {
+                        el.textContent = selectedValue;
+                    });
+                    
+                    Utils.showNotification(`Membership tier updated to ${selectedValue}!`, 'success');
+                });
+            }
+
+            // ── Settings Save Changes ─────────────────────────────────────
+            const saveSettingsBtn = document.getElementById('saveSettingsBtn');
+            if (saveSettingsBtn) {
+                saveSettingsBtn.addEventListener('click', function () {
+                    const first = document.getElementById('settingsFirstName').value;
+                    const last = document.getElementById('settingsLastName').value;
+                    
+                    document.querySelectorAll('.member-name-display').forEach(el => {
+                        el.textContent = `${first} ${last}`;
+                    });
+                    
+                    document.querySelectorAll('.member-first-name').forEach(el => {
+                        el.textContent = first;
+                    });
+
+                    Utils.showNotification('Portal profile settings updated!', 'success');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memberships - PulseFit Gym & Classes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/style.css?v=2.0" rel="stylesheet">
+    <link href="assets/css/premium.css" rel="stylesheet">
+    <style>
+        /* Failsafe to guarantee text is dark in light mode */
+        html:not([data-theme="dark"]) .pricing-hero h1,
+        html:not([data-theme="dark"]) .feature-matrix h2 {
+            color: #1E293B !important;
+        }
+        html:not([data-theme="dark"]) .pricing-hero p.lead,
+        html:not([data-theme="dark"]) .feature-matrix p.text-muted {
+            color: #64748B !important;
+        }
+
+        @media (min-width: 992px) and (max-width: 1024px) {
+            .pricing-hero .starter-cta {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                white-space: nowrap;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .pricing-hero .recommended-cta {
+                top: 0.75rem !important;
+                right: 0.75rem !important;
+                margin: 0 !important;
+                padding: 0.35rem 0.75rem !important;
+                font-size: 0.65rem !important;
+                line-height: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Premium Header -->
+    <header class="navbar-header fixed-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-4 px-xl-5">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <div class="brand-logo">
+                        <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                    </div>
+                    <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="navbar-nav mx-auto d-none d-xl-flex align-items-center">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="home2.html">Workouts</a>
+                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="services.html">Classes</a>
+                    <a class="nav-link active" href="pricing.html">Memberships</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a href="dashboard.html" class="btn btn-outline-primary btn-sm ms-2">Member Portal</a>
+                    <a href="login.html" class="btn btn-outline-primary btn-sm ms-2">Login</a>
+                    <button class="btn btn-outline-secondary btn-sm ms-2" id="rtlToggleBtn">RTL</button>
+                    <button class="theme-toggle btn btn-link text-decoration-none ms-3" id="themeToggle">
+                        <i class="bi bi-sun fs-5"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Menu -->
+                <button class="hamburger-menu d-xl-none" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Side Menu -->
+        <div class="mobile-side-menu" id="mobileSideMenu">
+            <div class="side-menu-header">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                        <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                    </div>
+                    <button class="close-menu" id="closeMenu">
+                        <i class="bi bi-x-lg fs-4"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="side-menu-body">
+                <a href="index.html" class="side-menu-link">Home</a>
+                <a href="home2.html" class="side-menu-link">Workouts</a>
+                <a href="about.html" class="side-menu-link">About</a>
+                <a href="services.html" class="side-menu-link">Classes</a>
+                <a href="pricing.html" class="side-menu-link active">Memberships</a>
+                <a href="contact.html" class="side-menu-link">Contact</a>
+                <a href="dashboard.html" class="side-menu-link">Member Portal</a>
+                <div class="side-menu-divider"></div>
+                <button class="rtl-toggle-mobile btn btn-outline-secondary w-100 mb-2" id="rtlToggleMobile">
+                    <i class="bi bi-text-left-right me-2"></i> Toggle RTL
+                </button>
+                <button class="theme-toggle-mobile btn btn-outline-primary w-100 mb-3" id="themeToggleMobile">
+                    <i class="bi bi-sun me-2"></i> Toggle Theme
+                </button>
+                <a href="login.html" class="btn btn-outline-secondary w-100 mb-2">Login</a>
+                <a href="signup.html" class="btn btn-primary w-100 text-white">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: Premium Pricing Hero -->
+    <section class="memberships-hero">
+        <div class="gradient-orb" style="top: 10%; left: -5%;"></div>
+        <div class="gradient-orb gradient-orb-secondary" style="bottom: 10%; right: -5%;"></div>
+
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="badge bg-primary-subtle text-primary px-3 py-2 mb-4 rounded-pill">Pricing Plans</div>
+                <h1 class="display-3 fw-bold mb-4">Choose Your Path to Peak Performance</h1>
+                <p class="lead text-muted mx-auto max-w-600">
+                    Transparent, contract-free plans designed to power your health goals. Lock in discount rates with our yearly cycles.
+                </p>
+            </div>
+
+            <!-- Billing Cycle Toggle Switch -->
+            <div class="billing-toggle-container stagger-up delay-1">
+                <span class="fw-bold fs-5 text-muted" id="billingMonthlyLabel">Monthly</span>
+                <label class="switch-pricing">
+                    <input type="checkbox" id="pricingToggleInput">
+                    <span class="slider-pricing"></span>
+                </label>
+                <span class="fw-bold fs-5 text-muted" id="billingYearlyLabel">
+                    Yearly <span class="badge bg-primary-subtle text-primary ms-1 small rounded-pill">Save 20%</span>
+                </span>
+            </div>
+
+            <!-- Pricing Cards Matrix -->
+            <div class="row g-4 py-5 align-items-stretch justify-content-center stagger-up delay-2">
+                
+                <!-- Basic Card -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="membership-card p-5">
+                        <h4 class="fw-bold text-muted mb-2">Basic</h4>
+                        <p class="small text-muted mb-4">Essential access for gym independence.</p>
+                        
+                        <div class="plan-price-wrap">
+                            <span class="plan-price-num text-primary" id="basicPrice">$49</span>
+                            <span class="plan-period text-muted">/month</span>
+                        </div>
+
+                        <ul class="plan-features-list flex-grow-1">
+                            <li><i class="bi bi-check-circle-fill"></i> Gym Floor & Cardio Equipment</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Premium Locker Rooms & Showers</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Portal Booking Tracking</li>
+                            <li class="text-muted"><i class="bi bi-x-circle text-muted"></i> No Class Access Included</li>
+                        </ul>
+
+                        <a href="signup.html" class="btn btn-outline-primary btn-lg w-100 py-3 mt-4 btn-magnetic">Get Basic</a>
+                    </div>
+                </div>
+
+                <!-- Pro Card (Recommended) -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="membership-card recommended p-5">
+                        <div class="recommended-badge">Most Popular</div>
+                        <h4 class="fw-bold text-primary mb-2">Pro Class Pass</h4>
+                        <p class="small text-muted mb-4">Our most complete, high-energy package.</p>
+                        
+                        <div class="plan-price-wrap">
+                            <span class="plan-price-num text-primary" id="proPrice">$79</span>
+                            <span class="plan-period text-muted">/month</span>
+                        </div>
+
+                        <ul class="plan-features-list flex-grow-1">
+                            <li><i class="bi bi-check-circle-fill"></i> All Gym Floor & Cardio Access</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Unlimited Zumba, Yoga & HIIT</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Priority Class Portal Bookings</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 2 Complimentary Guest Passes</li>
+                        </ul>
+
+                        <a href="signup.html" class="btn btn-primary btn-lg w-100 py-3 mt-4 btn-ripple btn-magnetic">Get Pro Pass</a>
+                    </div>
+                </div>
+
+                <!-- Elite Card -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="membership-card p-5">
+                        <h4 class="fw-bold text-muted mb-2">Elite VIP</h4>
+                        <p class="small text-muted mb-4">Personalized tracking for maximum results.</p>
+                        
+                        <div class="plan-price-wrap">
+                            <span class="plan-price-num text-primary" id="elitePrice">$149</span>
+                            <span class="plan-period text-muted">/month</span>
+                        </div>
+
+                        <ul class="plan-features-list flex-grow-1">
+                            <li><i class="bi bi-check-circle-fill"></i> All Pro Class & Floor Benefits</li>
+                            <li><i class="bi bi-check-circle-fill"></i> 2 Personal Coaching Sessions</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Customized Nutrition Planning</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Monthly Biometric Analytics</li>
+                        </ul>
+
+                        <a href="signup.html" class="btn btn-outline-primary btn-lg w-100 py-3 mt-4 btn-magnetic">Get Elite VIP</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: ROI Growth Roadmap - Cinematic Zigzag -->
+    <section class="roi-roadmap py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <div class="roadmap-image-wrap p-2 rounded-4 shadow-xl glass-morphism bg-white">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop"
+                            class="img-fluid rounded-3 w-100" alt="Fitness Roadmap">
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5 mt-5 mt-lg-0 text-center text-lg-start">
+                    <h2 class="display-4 fw-bold mb-4">The Fitness Roadmap</h2>
+                    <p class="lead text-muted mb-5">We identify your current physical capabilities and systematically scale your strength, endurance, and flexibility safely through our portal calendar.</p>
+                    <div class="step-card d-flex flex-column align-items-center flex-lg-row align-items-lg-start mb-4">
+                        <div class="step-number flex-shrink-0 mb-3 me-lg-4 display-6 fw-bold text-primary">01</div>
+                        <div>
+                            <h5 class="fw-bold">Physical Form Assessment</h5>
+                            <p class="text-muted small mb-0">Our coaches check your lifting posture and cardiorespiratory baseline to map safety boundaries.</p>
+                        </div>
+                    </div>
+                    <div class="step-card d-flex flex-column align-items-center flex-lg-row align-items-lg-start">
+                        <div class="step-number flex-shrink-0 mb-3 me-lg-4 display-6 fw-bold text-primary">02</div>
+                        <div>
+                            <h5 class="fw-bold">Custom Routine Scheduling</h5>
+                            <p class="text-muted small mb-0">Select specific Yoga, Zumba, or HIIT slots to progressive overload muscle capacity over time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Feature Matrix - Glass Dashboard -->
+    <section class="feature-matrix premium-hero-bg py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Membership Feature Matrix</h2>
+                <p class="text-muted">Compare our gym capabilities and amenities across all tiers.</p>
+            </div>
+            <div class="matrix-table p-4 rounded-4 bg-white border shadow-sm">
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle mb-0">
+                        <thead>
+                            <tr class="border-bottom">
+                                <th class="py-3">Amenity / Benefit</th>
+                                <th class="text-center">Basic</th>
+                                <th class="text-center">Elite</th>
+                                <th class="text-center">Platinum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-4">Gym Floor & Cardio Equipment</td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">Unlimited Yoga, Zumba & HIIT Classes</td>
+                                <td class="text-center text-muted"><i class="bi bi-dash"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                                <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">1-on-1 Personal Training Slots</td>
+                                <td class="text-center text-muted"><i class="bi bi-dash"></i></td>
+                                <td class="text-center text-muted"><i class="bi bi-dash"></i></td>
+                                <td class="text-center text-success">2 Session/Mo Included</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Advisor FAQ - Split Combo -->
+    <section class="advisor-faq py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <div class="advisor-card p-5 rounded-4 bg-primary text-white shadow-2xl h-100">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop"
+                            class="img-fluid rounded-circle mb-4 mx-auto d-block border border-4 border-white border-opacity-25"
+                            style="width: 120px; height: 120px; object-fit: cover;">
+                        <h4 class="fw-bold text-center mb-3 text-white">Coach Consultation</h4>
+                        <p class="text-center text-white opacity-75 mb-4">Every new member receives a complimentary 30-minute goal mapping session with a senior trainer.</p>
+                        <a href="contact.html" class="btn btn-light w-100 py-3 fw-bold rounded-pill">Book My Consultation</a>
+                    </div>
+                </div>
+                <div class="col-lg-7 ps-lg-5">
+                    <h2 class="display-5 fw-bold mb-5">Membership Insights</h2>
+                    <div class="accordion accordion-flush" id="pricingFAQ">
+                        <div class="accordion-item bg-transparent">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#pq1">
+                                    Can I change my plan or cancel online?
+                                </button>
+                            </h2>
+                            <div id="pq1" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                <div class="accordion-body text-muted">
+                                    Yes! You can upgrade, downgrade, or cancel your gym membership online at any time via the billing area of your Member Portal.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-top mt-3 pt-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#pq2">
+                                    Are towels and lockers provided?
+                                </button>
+                            </h2>
+                            <div id="pq2" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                <div class="accordion-body text-muted">
+                                    Yes, all membership tiers have complimentary access to digital key lockers, showers, and fresh towels in the locker rooms.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-transparent border-top mt-3 pt-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent fw-bold" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#pq3">
+                                    Can I freeze my membership?
+                                </button>
+                            </h2>
+                            <div id="pq3" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                <div class="accordion-body text-muted">
+                                    Absolutely. You can freeze your membership for up to 3 calendar months per year at no additional charge in the portal settings.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <a class="navbar-brand d-flex align-items-center mb-3" href="index.html">
+                            <div class="brand-logo">
+                                <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                            </div>
+                            <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                        </a>
+                        <p class="text-muted">Premium gym & fitness class booking experience with certified coaches and modern training facilities.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Classes</a></li>
+                        <li><a href="pricing.html">Memberships</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Member Portal</h6>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Overview</a></li>
+                        <li><a href="dashboard.html">Book Class</a></li>
+                        <li><a href="dashboard.html">Weekly Timetable</a></li>
+                        <li><a href="dashboard.html">Attendance Log</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Gym Policies</a></li>
+                        <li><a href="#">FAQ & Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Account</h6>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Billing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-5 pt-4 border-top">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="text-muted mb-0">© 2026 PulseFit. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/premium.js"></script>
+</body>
+
+</html>

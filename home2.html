@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workouts - PulseFit Gym & Classes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/premium.css" rel="stylesheet">
+    <link href="assets/css/home2.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Premium Header -->
+    <header class="navbar-header fixed-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-4 px-xl-5">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <div class="brand-logo">
+                        <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                    </div>
+                    <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="navbar-nav mx-auto d-none d-xl-flex align-items-center">
+                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link active" href="home2.html">Workouts</a>
+                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="services.html">Classes</a>
+                    <a class="nav-link" href="pricing.html">Memberships</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a href="dashboard.html" class="btn btn-outline-primary btn-sm ms-2">Member Portal</a>
+                    <a href="login.html" class="btn btn-outline-primary btn-sm ms-2">Login</a>
+                    <button class="btn btn-outline-secondary btn-sm ms-2" id="rtlToggleBtn">RTL</button>
+                    <button class="theme-toggle btn btn-link text-decoration-none ms-3" id="themeToggle">
+                        <i class="bi bi-sun fs-5"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Menu -->
+                <button class="hamburger-menu d-xl-none" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Side Menu -->
+        <div class="mobile-side-menu" id="mobileSideMenu">
+            <div class="side-menu-header">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                        <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                    </div>
+                    <button class="close-menu" id="closeMenu">
+                        <i class="bi bi-x-lg fs-4"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="side-menu-body">
+                <a href="index.html" class="side-menu-link">Home</a>
+                <a href="home2.html" class="side-menu-link active">Workouts</a>
+                <a href="about.html" class="side-menu-link">About</a>
+                <a href="services.html" class="side-menu-link">Classes</a>
+                <a href="pricing.html" class="side-menu-link">Memberships</a>
+                <a href="contact.html" class="side-menu-link">Contact</a>
+                <a href="dashboard.html" class="side-menu-link">Member Portal</a>
+                <div class="side-menu-divider"></div>
+                <button class="rtl-toggle-mobile btn btn-outline-secondary w-100 mb-2" id="rtlToggleMobile">
+                    <i class="bi bi-text-left-right me-2"></i> Toggle RTL
+                </button>
+                <button class="theme-toggle-mobile btn btn-outline-primary w-100 mb-3" id="themeToggleMobile">
+                    <i class="bi bi-sun me-2"></i> Toggle Theme
+                </button>
+                <a href="login.html" class="btn btn-outline-secondary w-100 mb-2">Login</a>
+                <a href="signup.html" class="btn btn-primary w-100 text-white">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Alternative Hero Section -->
+    <section class="workouts-hero">
+        <div class="gradient-orb" style="top: 20%; left: -10%;"></div>
+        <div class="gradient-orb gradient-orb-secondary" style="bottom: 10%; right: -5%;"></div>
+
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Text column -->
+                <div class="col-12 col-lg-6">
+                    <div class="hero-content text-center text-lg-start">
+                        <div class="badge bg-primary-subtle text-primary px-3 py-2 mb-4 rounded-pill stagger-up">
+                            PulseFit Workouts
+                        </div>
+                        <h1 class="display-2 fw-bold mb-4 stagger-up delay-1">
+                            Build Strength.<br><span class="text-primary">Build Confidence.</span>
+                        </h1>
+                        <p class="lead text-muted mb-5 stagger-up delay-2">
+                            High-intensity cardio, power lifting, and dynamic core routines engineered by certified coaches to transform your physical and mental capacities.
+                        </p>
+                        <div class="stagger-up delay-3">
+                            <a href="services.html" class="btn btn-primary btn-lg btn-ripple btn-magnetic px-5 py-3">Explore Workouts</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image column (Asymmetric Split Screen) -->
+                <div class="col-12 col-lg-6">
+                    <div class="position-relative stagger-up delay-2">
+                        <div class="workouts-hero-image-wrap">
+                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop" 
+                                 alt="High Energy Training" 
+                                 class="workouts-hero-image">
+                        </div>
+
+                        <!-- Overlapping Workout Cards -->
+                        <div class="overlapping-workout-card glass-card rounded-4 p-3 d-flex flex-column gap-3 shadow-lg" style="position: absolute; bottom: -20px; right: 20px;">
+                            <h6 class="fw-bold mb-0 text-primary small uppercase"><i class="bi bi-activity me-2"></i>Performance Stats</h6>
+                            
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="stat-icon bg-purple-soft" style="width: 40px; height: 40px; border-radius: 8px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-lightning-fill"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="small fw-bold">Strength</span>
+                                        <span class="small text-muted">Level 3</span>
+                                    </div>
+                                    <div class="progress" style="height: 6px; border-radius: 3px;">
+                                        <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="stat-icon bg-blue-soft" style="width: 40px; height: 40px; border-radius: 8px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-heart-pulse-fill"></i>
+                                </div>
+                                <div>
+                                    <span class="small text-muted d-block">HIIT Burn Rate</span>
+                                    <span class="small fw-bold">165 BPM</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="stat-icon bg-green-soft" style="width: 40px; height: 40px; border-radius: 8px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-fire"></i>
+                                </div>
+                                <div>
+                                    <span class="small text-muted d-block">Cardio Blast</span>
+                                    <span class="small fw-bold">600 Cal / hr</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicator -->
+    <section class="bg-light py-4 border-bottom border-top">
+        <div class="container">
+            <div class="row align-items-center justify-content-center g-4 opacity-50">
+                <div class="col-6 col-md-2 text-center">
+                    <h5 class="fw-bold mb-0">FITNESS ALLIANCE</h5>
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <h5 class="fw-bold mb-0">ACTIVE LIFE</h5>
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <h5 class="fw-bold mb-0">GYM HUB</h5>
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <h5 class="fw-bold mb-0">WELLNESS CO</h5>
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <h5 class="fw-bold mb-0">BODYBUILDING PRO</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Advantages Grid -->
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3">Why Fitness Seekers Choose Us</h2>
+                <p class="lead text-muted">We combine certified coaching and state-of-the-art programming for maximum body transformations.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="expertise-card p-4 h-100 text-center border rounded-4 hover-translate-y shadow-sm transition-all">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" alt="Zumba Cardio" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 160px;">
+                        <h5 class="fw-bold">Zumba Cardio</h5>
+                        <p class="text-muted small">High-tempo dance workouts that burn up to 600 calories per session while keeping motivation at an all-time high.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="expertise-card p-4 h-100 text-center border rounded-4 hover-translate-y shadow-sm transition-all">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop" alt="Vinyasa Yoga" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 160px;">
+                        <h5 class="fw-bold">Vinyasa Yoga</h5>
+                        <p class="text-muted small">Restorative stretching and breathing slots designed to recover deep muscle fibers and reduce stress levels.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="expertise-card p-4 h-100 text-center border rounded-4 hover-translate-y shadow-sm transition-all">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" alt="HIIT Sessions" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 160px;">
+                        <h5 class="fw-bold">HIIT Sessions</h5>
+                        <p class="text-muted small">Short, high-intensity intervals that burn fat and spike cardiovascular conditioning long after class ends.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="expertise-card p-4 h-100 text-center border rounded-4 hover-translate-y shadow-sm transition-all">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop" alt="Strength & Lift" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 160px;">
+                        <h5 class="fw-bold">Strength & Lift</h5>
+                        <p class="text-muted small">Form-focused powerlifting, kettlebell circuits, and core hypertrophy training led by elite, certified coaches.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Feature: Advanced Analysis -->
+    <section class="py-5 bg-light overflow-hidden">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="image-stack position-relative pl-5">
+                        <div class="rounded-4 overflow-hidden shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop" class="img-fluid w-100" alt="Yoga Session">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold mb-4">Restore & Rebuild with Mindful Yoga</h2>
+                    <p class="lead text-muted mb-4">Post-workout recovery is just as crucial as your training. Our custom-guided yoga slots focus on breathing mechanics and joint flexibility to optimize your performance.</p>
+                    <ul class="list-unstyled mb-5">
+                        <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i> Posture and spine alignment</li>
+                        <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i> Deep muscle fiber restoration</li>
+                        <li class="d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-3"></i> Stress reduction & mental clarity</li>
+                    </ul>
+                    <a href="services.html" class="btn btn-outline-primary btn-lg px-4 py-3">View Yoga Schedule</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Feature: A/B Testing -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center g-5 flex-lg-row-reverse">
+                <div class="col-lg-6">
+                    <div class="rounded-4 overflow-hidden shadow-2xl glass-morphism p-2">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" class="img-fluid rounded-3 w-100" alt="Zumba Workout">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold mb-4">High-Energy Group Cardio Workouts</h2>
+                    <p class="lead text-muted mb-4">Sweat, laugh, and challenge your boundaries in our high-octane Zumba and HIIT classes. Experience dynamic choreographies and intervals that keep fitness extremely fun.</p>
+                    <div class="row g-4 mb-5">
+                        <div class="col-6">
+                            <div class="stat-item p-3 rounded-4 bg-primary-subtle">
+                                <h3 class="fw-bold text-primary mb-1">150+</h3>
+                                <p class="text-muted small mb-0">Active Slots Weekly</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-item p-3 rounded-4 bg-success-subtle">
+                                <h3 class="fw-bold text-success mb-1">2.4x</h3>
+                                <p class="text-muted small mb-0">Avg. Fitness Gains</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="services.html" class="btn btn-primary btn-lg px-4 py-3">Book A Class Slot</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 position-relative overflow-hidden premium-hero-bg">
+        <div class="container py-5 text-center position-relative z-1">
+            <h2 class="display-3 fw-bold mb-4">Start Your Fitness Journey.</h2>
+            <p class="lead text-muted mb-5 max-w-700 mx-auto">Join the PulseFit family and achieve the peak physical condition you've always wanted.</p>
+            <a href="contact.html" class="btn btn-primary btn-lg px-5 py-4 fs-4 rounded-pill">Apply For Trial Class</a>
+        </div>
+        <div class="bg-blur"
+            style="position:absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 45, 85, 0.1) 0%, transparent 60%); z-index: 0;">
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <a class="navbar-brand d-flex align-items-center mb-3" href="index.html">
+                            <div class="brand-logo">
+                                <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                            </div>
+                            <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                        </a>
+                        <p class="text-muted">Premium gym & fitness class booking experience with certified coaches and modern training facilities.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Classes</a></li>
+                        <li><a href="pricing.html">Memberships</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Member Portal</h6>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Overview</a></li>
+                        <li><a href="dashboard.html">Book Class</a></li>
+                        <li><a href="dashboard.html">Weekly Timetable</a></li>
+                        <li><a href="dashboard.html">Attendance Log</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Gym Policies</a></li>
+                        <li><a href="#">FAQ & Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Account</h6>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Billing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-5 pt-4 border-top">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="text-muted mb-0">© 2026 PulseFit. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/premium.js"></script>
+</body>
+
+</html>

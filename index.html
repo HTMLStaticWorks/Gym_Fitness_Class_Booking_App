@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseFit - Gym & Fitness Class Booking App</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/premium.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Premium Header -->
+    <header class="navbar-header fixed-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid px-4 px-xl-5">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <div class="brand-logo">
+                        <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                    </div>
+                    <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="navbar-nav mx-auto d-none d-xl-flex align-items-center">
+                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link" href="home2.html">Workouts</a>
+                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="services.html">Classes</a>
+                    <a class="nav-link" href="pricing.html">Memberships</a>
+                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a href="dashboard.html" class="btn btn-outline-primary btn-sm ms-2">Member Portal</a>
+                    <a href="login.html" class="btn btn-outline-primary btn-sm ms-2">Login</a>
+                    <button class="btn btn-outline-secondary btn-sm ms-2" id="rtlToggleBtn">RTL</button>
+                    <button class="theme-toggle btn btn-link text-decoration-none ms-3" id="themeToggle">
+                        <i class="bi bi-sun fs-5"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Menu -->
+                <button class="hamburger-menu d-xl-none" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Side Menu -->
+        <div class="mobile-side-menu" id="mobileSideMenu">
+            <div class="side-menu-header">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                        <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                    </div>
+                    <button class="close-menu" id="closeMenu">
+                        <i class="bi bi-x-lg fs-4"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="side-menu-body">
+                <a href="index.html" class="side-menu-link active">Home</a>
+                <a href="home2.html" class="side-menu-link">Workouts</a>
+                <a href="about.html" class="side-menu-link">About</a>
+                <a href="services.html" class="side-menu-link">Classes</a>
+                <a href="pricing.html" class="side-menu-link">Memberships</a>
+                <a href="contact.html" class="side-menu-link">Contact</a>
+                <a href="dashboard.html" class="side-menu-link">Member Portal</a>
+                <div class="side-menu-divider"></div>
+                <button class="rtl-toggle-mobile btn btn-outline-secondary w-100 mb-2" id="rtlToggleMobile">
+                    <i class="bi bi-text-left-right me-2"></i> Toggle RTL
+                </button>
+                <button class="theme-toggle-mobile btn btn-outline-primary w-100 mb-3" id="themeToggleMobile">
+                    <i class="bi bi-sun me-2"></i> Toggle Theme
+                </button>
+                <a href="login.html" class="btn btn-outline-secondary w-100 mb-2">Login</a>
+                <a href="signup.html" class="btn btn-primary w-100 text-white">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="home-hero">
+        <!-- Floating Animated Orbs -->
+        <div class="gradient-orb" style="top: 10%; right: 15%;"></div>
+        <div class="gradient-orb gradient-orb-secondary" style="bottom: 20%; left: 10%;"></div>
+
+        <div class="container">
+            <div class="row align-items-center g-5 min-vh-90">
+                <!-- Text column — LEFT on desktop, SECOND on mobile -->
+                <div class="col-12 col-lg-6 order-2 order-lg-1">
+                    <div class="hero-content text-center text-lg-start">
+                        <div class="badge bg-primary-subtle text-primary px-3 py-2 mb-4 rounded-pill stagger-up">
+                            <i class="bi bi-lightning-charge-fill me-2"></i>Unleash Your Absolute Potential
+                        </div>
+                        <h1 class="display-1 fw-extrabold mb-4 stagger-up delay-1" style="line-height: 1.1; letter-spacing: -0.03em;">
+                            Train Hard.<br><span class="text-primary">Live Strong.</span>
+                        </h1>
+                        <p class="lead text-muted mb-5 stagger-up delay-2 max-w-500">
+                            Book Yoga, Zumba, HIIT, or Strength slots instantly. Track your weekly check-ins and manage your fitness membership entirely online.
+                        </p>
+
+                        <div class="hero-actions d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start stagger-up delay-3">
+                            <a href="services.html" class="btn btn-primary btn-lg btn-ripple btn-magnetic px-5 py-3">
+                                <i class="bi bi-calendar3 me-2"></i>Book a Class
+                            </a>
+                            <a href="home2.html" class="btn btn-outline-primary btn-lg btn-magnetic px-5 py-3">
+                                Explore Workouts
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image column — RIGHT on desktop, FIRST on mobile -->
+                <div class="col-12 col-lg-6 order-1 order-lg-2">
+                    <div class="home-hero-visual stagger-up delay-1">
+                        <div class="hero-image-container position-relative px-3">
+                            <!-- Floating Glass Cards (Metrics) -->
+                            <div class="floating-stat-badge badge-members glass-card">
+                                <div class="stat-icon bg-blue-soft"><i class="bi bi-people-fill"></i></div>
+                                <div>
+                                    <h4 class="value mb-0 fw-bold counter-ticker" data-target="15" data-suffix="K+">0</h4>
+                                    <span class="tiny text-muted">Members</span>
+                                </div>
+                            </div>
+                            
+                            <div class="floating-stat-badge badge-classes glass-card">
+                                <div class="stat-icon bg-purple-soft"><i class="bi bi-heart-pulse-fill"></i></div>
+                                <div>
+                                    <h4 class="value mb-0 fw-bold counter-ticker" data-target="120" data-suffix="+">0</h4>
+                                    <span class="tiny text-muted">Classes</span>
+                                </div>
+                            </div>
+
+                            <div class="floating-stat-badge badge-trainers glass-card">
+                                <div class="stat-icon bg-green-soft"><i class="bi bi-trophy-fill"></i></div>
+                                <div>
+                                    <h4 class="value mb-0 fw-bold counter-ticker" data-target="35" data-suffix="+">0</h4>
+                                    <span class="tiny text-muted">Coaches</span>
+                                </div>
+                            </div>
+
+                            <div class="floating-stat-badge badge-rating glass-card">
+                                <div class="stat-icon bg-orange-soft"><i class="bi bi-star-fill"></i></div>
+                                <div>
+                                    <h4 class="value mb-0 fw-bold counter-ticker" data-target="4.9" data-decimals="1">0</h4>
+                                    <span class="tiny text-muted">Rating</span>
+                                </div>
+                            </div>
+
+                            <img src="assets/images/fitness-hero.png" alt="PulseFit Trainer"
+                                 class="img-fluid home-hero-image w-100 position-relative z-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>ion>
+
+    <!-- Services Section -->
+    <section class="services-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Our Fitness Classes</h2>
+                <p class="lead text-muted">Join high-energy class slots led by our professional instructors</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100 d-flex flex-column">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop" alt="Vinyasa Yoga" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 200px;">
+                        <h4 class="fw-bold mb-3">Vinyasa Yoga</h4>
+                        <p class="text-muted">Find your flow, align your breathing, and build deep core strength with our restorative Vinyasa yoga sessions.</p>
+                        <a href="services.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100 d-flex flex-column">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" alt="Zumba Cardio" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 200px;">
+                        <h4 class="fw-bold mb-3">Zumba Cardio</h4>
+                        <p class="text-muted">High-energy dance workouts that combine Latin and international music, turning cardio into a fun party.</p>
+                        <a href="services.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100 d-flex flex-column">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop" alt="Strength & Conditioning" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 200px;">
+                        <h4 class="fw-bold mb-3">Strength & Conditioning</h4>
+                        <p class="text-muted">Build muscle, increase power, and master your lifting form with certified personal trainers.</p>
+                        <a href="services.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100 d-flex flex-column">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop" alt="HIIT & Spin Cardio" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 200px;">
+                        <h4 class="fw-bold mb-3">HIIT & Spin Cardio</h4>
+                        <p class="text-muted">Burn maximum calories and improve cardiovascular fitness with high-intensity interval training.</p>
+                        <a href="services.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100 d-flex flex-column">
+                        <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=600&auto=format&fit=crop" alt="Pilates & Core" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 200px;">
+                        <h4 class="fw-bold mb-3">Pilates & Core</h4>
+                        <p class="text-muted">Strengthen your spine, improve flexibility, and target your deep abdominal muscles.</p>
+                        <a href="services.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card h-100 d-flex flex-column">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop" alt="Personal Training" class="img-fluid mb-4 rounded-3 w-100" style="object-fit: cover; max-height: 200px;">
+                        <h4 class="fw-bold mb-3">Personal Training</h4>
+                        <p class="text-muted">Receive custom workout plans and nutrition advice tailored specifically to your goals.</p>
+                        <a href="services.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Impact Section -->
+    <section class="visual-impact-section py-5 overflow-hidden">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                    <div class="visual-content ps-lg-5">
+                        <div class="badge bg-primary-subtle text-primary px-3 py-2 mb-4 rounded-pill">
+                            <i class="bi bi-eye me-2"></i>Interactive Member Portal
+                        </div>
+                        <h2 class="display-5 fw-bold mb-4">Manage Your Fitness Schedule Effortlessly.</h2>
+                        <p class="lead text-muted mb-4">Our interactive member portal lets you browse weekly class timetables, reserve specific slots for Zumba or Yoga, track your workout attendance history, and renew your membership online with ease.</p>
+
+                        <div class="impact-features mt-5">
+                            <div class="row g-4">
+                                <div class="col-sm-6">
+                                    <div class="impact-item">
+                                        <div class="impact-icon mb-3">
+                                            <i class="bi bi-lightning-fill text-warning fs-3"></i>
+                                        </div>
+                                        <h5 class="fw-bold">Instant Booking</h5>
+                                        <p class="text-muted small">Reserve class spots instantly from any device.</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="impact-item">
+                                        <div class="impact-icon mb-3">
+                                            <i class="bi bi-shield-check text-success fs-3"></i>
+                                        </div>
+                                        <h5 class="fw-bold">Track Attendance</h5>
+                                        <p class="text-muted small">Access your verified check-in history.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="impact-visual">
+                        <div class="image-wrapper rounded-4 shadow-xl overflow-hidden glass-morphism p-2 bg-white bg-opacity-10"
+                            style="backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                            <img src="assets/images/fitness-dashboard.png" alt="PulseFit Member Dashboard"
+                                class="img-fluid rounded-3 w-100 shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Preview Section -->
+    <section class="analytics-preview py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="analytics-content">
+                        <h2 class="display-5 fw-bold mb-4">Live Class Capacity & Timetable</h2>
+                        <p class="lead text-muted mb-4">See how many slots are remaining in your favorite fitness classes, view trainers, and plan your weekly workout calendar.</p>
+
+                        <div class="analytics-features">
+                            <div class="feature-item d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-3"></i>
+                                <span>Real-time slot availability for hot classes</span>
+                            </div>
+                            <div class="feature-item d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-3"></i>
+                                <span>Easy calendar sync for Google and Apple calendars</span>
+                            </div>
+                            <div class="feature-item d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-3"></i>
+                                <span>Filter by workout type, trainer, or peak hours</span>
+                            </div>
+                            <div class="feature-item d-flex align-items-center mb-3">
+                                <i class="bi bi-check-circle-fill text-success me-3"></i>
+                                <span>Join standby lists for fully booked sessions</span>
+                            </div>
+                        </div>
+
+                        <a href="dashboard.html" class="btn btn-primary btn-lg mt-4">View Weekly Timetable</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="analytics-visual">
+                        <div class="chart-container">
+                            <div class="chart-header">
+                                <h5 class="fw-bold">Gym Attendance Trend</h5>
+                                <span class="badge bg-success">+15% Attendance</span>
+                            </div>
+                            <div class="chart-body">
+                                <div class="line-chart">
+                                    <svg viewBox="0 0 400 200" class="w-100">
+                                        <polyline
+                                            points="20,150 60,120 100,130 140,90 180,70 220,85 260,60 300,45 340,50 380,30"
+                                            stroke="#FF2D55" stroke-width="3" fill="none" />
+                                        <polyline
+                                            points="20,150 60,120 100,130 140,90 180,70 220,85 260,60 300,45 340,50 380,30 380,200 20,200"
+                                            fill="url(#gradient)" opacity="0.1" />
+                                        <defs>
+                                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#FF2D55;stop-opacity:0.3" />
+                                                <stop offset="100%" style="stop-color:#FF2D55;stop-opacity:0" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Preview -->
+    <section class="case-studies-preview py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Member Success Stories</h2>
+                <p class="lead text-muted">See how our members have transformed their health and lifestyles at PulseFit</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="case-card h-100">
+                        <div class="case-image mb-4 overflow-hidden rounded-4">
+                            <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?q=80&w=600&auto=format&fit=crop" alt="Sarah Jenkins Fitness Journey"
+                                class="img-fluid w-100 hover-zoom">
+                        </div>
+                        <div class="case-header">
+                            <span class="badge bg-primary mb-3">Weight Loss</span>
+                            <h4 class="fw-bold">Sarah Jenkins</h4>
+                        </div>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <span class="metric-value text-success">-28 lbs</span>
+                                <span class="metric-label">Weight Lost</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value text-success">-12%</span>
+                                <span class="metric-label">Body Fat</span>
+                            </div>
+                        </div>
+                        <p class="text-muted">Sarah joined our Zumba and Yoga sessions, completely reforming her daily health and building deep core strength.</p>
+                        <a href="about.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Read Story →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="case-card h-100">
+                        <div class="case-image mb-4 overflow-hidden rounded-4">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop" alt="Marcus Vance Fitness Journey"
+                                class="img-fluid w-100 hover-zoom">
+                        </div>
+                        <div class="case-header">
+                            <span class="badge bg-primary mb-3">Muscle Building</span>
+                            <h4 class="fw-bold">Marcus Vance</h4>
+                        </div>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <span class="metric-value text-success">+15 lbs</span>
+                                <span class="metric-label">Muscle Gained</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value text-success">+80 lbs</span>
+                                <span class="metric-label">Bench Max</span>
+                            </div>
+                        </div>
+                        <p class="text-muted">Marcus utilized our custom training slots and advanced conditioning classes to build power and master his form.</p>
+                        <a href="about.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Read Story →</a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="case-card h-100">
+                        <div class="case-image mb-4 overflow-hidden rounded-4">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" alt="Emily Rogers Fitness Journey"
+                                class="img-fluid w-100 hover-zoom">
+                        </div>
+                        <div class="case-header">
+                            <span class="badge bg-primary mb-3">Core & Balance</span>
+                            <h4 class="fw-bold">Emily Rogers</h4>
+                        </div>
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <span class="metric-value text-success">100%</span>
+                                <span class="metric-label">Core Stability</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value text-success">-40%</span>
+                                <span class="metric-label">Stress Levels</span>
+                            </div>
+                        </div>
+                        <p class="text-muted">Emily combined yoga classes and general conditioning to improve mental focus, flexibility, and overall wellness.</p>
+                        <a href="about.html" class="btn btn-link text-primary text-decoration-none mt-auto align-self-start">Read Story →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold mb-3">Ready to Begin Your Fitness Journey?</h2>
+                    <p class="lead mb-0">Join 500+ active members who have transformed their health and lifestyle with PulseFit.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="contact.html" class="btn btn-light btn-lg px-5 py-3">Book a Free Trial Class</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <a class="navbar-brand d-flex align-items-center mb-3" href="index.html">
+                            <div class="brand-logo">
+                                <i class="bi bi-heart-pulse-fill text-primary fs-3"></i>
+                            </div>
+                            <span class="brand-name ms-2 fw-bold">PulseFit</span>
+                        </a>
+                        <p class="text-muted">Premium gym & fitness class booking experience with certified coaches and modern training facilities.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+                            <a href="#" class="social-link"><i class="bi bi-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Classes</a></li>
+                        <li><a href="pricing.html">Memberships</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Member Portal</h6>
+                    <ul class="footer-links">
+                        <li><a href="dashboard.html">Overview</a></li>
+                        <li><a href="dashboard.html">Book Class</a></li>
+                        <li><a href="dashboard.html">Weekly Timetable</a></li>
+                        <li><a href="dashboard.html">Attendance Log</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Resources</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Gym Policies</a></li>
+                        <li><a href="#">FAQ & Help</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2">
+                    <h6 class="fw-bold mb-3">Account</h6>
+                    <ul class="footer-links">
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Billing</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-5 pt-4 border-top">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="text-muted mb-0">© 2026 PulseFit. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">Privacy Policy</a>
+                            <a href="#">Terms of Service</a>
+                            <a href="#">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/premium.js"></script>
+</body>
+
+</html>
