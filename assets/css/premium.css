@@ -742,3 +742,49 @@ input:checked + .slider-pricing:before {
     transform: translateY(0);
   }
 }
+
+/* ===== Responsive Floating Badges Adjustment ===== */
+@media (max-width: 1024px) {
+  .badge-members {
+    left: 10px !important;
+    right: auto !important;
+  }
+  .badge-classes {
+    left: 10px !important;
+    right: auto !important;
+  }
+  .badge-trainers {
+    right: 10px !important;
+    left: auto !important;
+  }
+  .badge-rating {
+    right: 10px !important;
+    left: auto !important;
+  }
+}
+
+/* ===== About Page Gaps Fix on Tablet/Mobile ===== */
+@media (max-width: 1024px) {
+  .about-hero {
+    min-height: auto !important;
+    padding: 6rem 0 3rem !important;
+  }
+  .about-showcase.vh-100 {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 4rem 0 !important;
+  }
+}
+
+/* ===== Classes Grid Centering on Tablet ===== */
+@media (max-width: 991.98px) {
+  .classes-grid-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+  }
+  .class-premium-card {
+    flex: 0 1 340px !important;
+  }
+}

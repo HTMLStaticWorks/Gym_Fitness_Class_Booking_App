@@ -358,6 +358,11 @@ class PasswordToggle {
         const passwordInputs = document.querySelectorAll('input[type="password"]');
 
         passwordInputs.forEach(input => {
+            // Skip inputs that already have a hardcoded toggle button
+            if (input.parentNode.querySelector('button')) {
+                return;
+            }
+
             const wrapper = document.createElement('div');
             wrapper.style.position = 'relative';
             wrapper.style.display = 'inline-block';
@@ -559,6 +564,41 @@ class TooltipManager {
     }
 }
 
+// ===== Back to Top =====
+class BackToTop {
+    constructor() {
+        this.btn = null;
+        this.init();
+    }
+
+    init() {
+        // Create the button dynamically
+        this.btn = document.createElement('button');
+        this.btn.id = 'backToTop';
+        this.btn.className = 'btn btn-primary back-to-top';
+        this.btn.setAttribute('aria-label', 'Back to Top');
+        this.btn.innerHTML = '<i class="bi bi-arrow-up"></i>';
+        document.body.appendChild(this.btn);
+
+        // Toggle visibility on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                this.btn.classList.add('show');
+            } else {
+                this.btn.classList.remove('show');
+            }
+        });
+
+        // Scroll to top on click
+        this.btn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
 // ===== Initialize Everything =====
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
@@ -573,6 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new DashboardInteractions();
     new LoadingStates();
     new TooltipManager();
+    new BackToTop();
 
     // Add page load animation
     document.body.style.opacity = '0';
